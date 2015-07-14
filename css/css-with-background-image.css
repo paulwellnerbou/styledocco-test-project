@@ -1,0 +1,90 @@
+/*
+#### A CSS file demonstrating StyleDocco's handling with CSS background images.
+*/
+
+/*
+##### 1. Examples which should work without web server
+*/
+.left {
+	float:left;
+}
+
+code {
+	background-color: lightgray;
+}
+
+.bg-container {
+	width: 104px;
+	height: 120px;
+	border: 1px solid gray;
+}
+
+.bg-container.left {
+	margin-right: 1em;
+}
+
+/*
+A div with a remote tux background:
+
+```
+<div class="bg-container background-image-remote left">&nbsp;</div>
+<div>This works fine.</div>
+```
+*/
+
+.background-image-remote {
+	background-image: url('https://www.kernel.org/theme/images/logos/tux.png');
+}
+
+/*
+A div with a local, relative tux background:
+
+```
+<div class="bg-container background-image-local-relative left">&nbsp;</div>
+<div>This works in chrome, but not in Firefox.<br/>
+The URL of the image is correct, but Firefox is creating a <code>chrome://browser/...</code> URL somehow.</div>
+```
+*/
+
+.background-image-local-relative {
+	background-image: url('../imgs/tux.png');
+}
+
+/*
+##### 2. Examples which require a webserver serving this project's root as document root
+*/
+/*
+<b>NOTE:</b> <i>To make the following examples work, you will have to access this HTML page via a webserver started in
+the project's root directory. You can run <code>grunt serve</code>, this will open a webserver
+on port 9000.</i>
+*/
+
+/*
+A div with a local, absolute tux background:
+
+```
+<div class="bg-container background-image-local-absolute left">&nbsp;</div>
+<div>This works in chrome, but not in Firefox.<br/>
+The URL of the image is correct, but Firefox is creating a <code>chrome://browser/...</code> URL somehow.
+</div>
+```
+*/
+
+.background-image-local-absolute {
+	background-image: url('/imgs/tux.png');
+}
+
+/*
+A div with a remote URL with the the same protocol
+
+```
+<div class="bg-container background-image-same-protocol left">&nbsp;</div>
+<div>This works in chrome, but not in Firefox.<br/>
+The URL of the image is correct, but Firefox is creating a <code>chrome://localhost:9000/...</code> URL somehow.
+</div>
+```
+*/
+
+.background-image-same-protocol {
+	background-image: url('//localhost:9000/imgs/tux.png');
+}
